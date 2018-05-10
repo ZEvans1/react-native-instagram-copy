@@ -28,7 +28,7 @@ class InstaClone extends Component {
                     style={{width: 100 + "%", height: 100}}
                     source={{
                         uri:
-                            "https://www.thebrandbite.com/wp-content/media/2015/07/apple-7.jpg"
+                            "https://www.in.gov/dnr/images/dnr-6498.jpg"
                     }}
                 />
             </View>
