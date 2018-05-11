@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 
 class InstaClone extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            screenWidth: 0
+        };
+    }
+
+    componentDidMount() {
+        this.setState({
+            screenWidth: Dimensions.get("window").width
+        })
+    }
 
     render(){
         return(
@@ -20,12 +33,12 @@ class InstaClone extends Component {
                         />
                         <Text style={{ marginLeft: 10 }}>User_Name</Text>
                         </View>
-                    <View>
-                        <Text style={{ fontSize: 36 }}>...</Text>
+                    <View style={{ alignItems: "center" }}>
+                        <Text style={{ fontSize: 30 }}>...</Text>
                     </View>
                 </View>
                 <Image
-                    style={{width: 100 + "%", height: 100}}
+                    style={{ width: this.state.screenWidth, height: 400 }}
                     source={{
                         uri:
                             "https://www.in.gov/dnr/images/dnr-6498.jpg"
