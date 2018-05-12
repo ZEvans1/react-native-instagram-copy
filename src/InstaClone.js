@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import config from "./config";
 
 class InstaClone extends Component {
 
@@ -44,6 +45,9 @@ class InstaClone extends Component {
                             "https://www.in.gov/dnr/images/dnr-6498.jpg"
                     }}
                 />
+                <View style={styles.iconBar}>
+
+                </View>
             </View>
         );
     }
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
 
     userBar: {
         width: 100 + "%",
-        height: 50,
+        height: config.styleConstants.rowHeight,
         backgroundColor: "rgb(255,255,255)",
         flexDirection: "row",
         paddingHorizontal: 10,
@@ -74,6 +78,11 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
         borderRadius: 20
+    },
+
+    iconBar: {
+        height: config.styleConstants.rowHeight,
+        width: 100 + "%"
     }
 })
 
