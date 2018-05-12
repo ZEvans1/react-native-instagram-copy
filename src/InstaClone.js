@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import config from "./config";
 
 class InstaClone extends Component {
@@ -7,13 +7,14 @@ class InstaClone extends Component {
     constructor() {
         super();
         this.state = {
-            screenWidth: 0
+            liked: false,
+            screenWidth: Dimensions.get("window").width
         };
     }
 
-    componentDidMount() {
+    likeToggled() {
         this.setState({
-            screenWidth: Dimensions.get("window").width
+            liked: !this.state.liked
         })
     }
 
@@ -46,7 +47,11 @@ class InstaClone extends Component {
                     }}
                 />
                 <View style={styles.iconBar}>
-
+                    <Image 
+                    style={[styles.icon, {tintColor: "rgb(252,61,57)"}]} 
+                    source={config.images.heartIcon}/>
+                    <Image style={styles.icon} source={config.images.bubbleIcon}/>
+                    <Image style={styles.icon} source={config.images.arrowIcon}/>
                 </View>
             </View>
         );
@@ -82,7 +87,18 @@ const styles = StyleSheet.create({
 
     iconBar: {
         height: config.styleConstants.rowHeight,
-        width: 100 + "%"
+        width: 100 + "%",
+        borderColor: "rgb(233,233,233)",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderTopWidth: StyleSheet.hairlineWidth,
+        flexDirection: "row",
+        alignItems: "center"
+    },
+
+    icon: {
+        height: 30,
+        width: 30,
+        marginLeft: 5
     }
 })
 
