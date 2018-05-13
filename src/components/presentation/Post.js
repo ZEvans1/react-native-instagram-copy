@@ -21,6 +21,8 @@ class Post extends Component {
     render(){
         const heartIconColor = this.state.liked ? "rgb(252,61,57)" : null;
         
+        const imageSelection = this.props.item % 2 === 0 ? "https://www.in.gov/dnr/images/dnr-6498.jpg" : "https://images.pexels.com/photos/247600/pexels-photo-247600.jpeg?cs=srgb&dl=nature-water-forest-247600.jpg&fm=jpg"
+
         return(
             <View style={{ flex: 1, width: 100 + "%"}}>
                 <View style={styles.userBar}>
@@ -48,7 +50,7 @@ class Post extends Component {
                     style={{ width: this.state.screenWidth, height: 400 }}
                     source={{
                         uri:
-                            "https://www.in.gov/dnr/images/dnr-6498.jpg"
+                            imageSelection
                     }}
                 />
                 </TouchableOpacity>
