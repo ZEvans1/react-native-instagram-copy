@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { MainFeed, Register, Login, Camera, Profile } from './components/screens';
-import { SwitchNavigator, TabNavigator, StackNavigator } from 'react-navigation';
+import { createSwitchNavigator, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
+import firebase from 'react-native-firebase';
 
-const Tabs = TabNavigator({
+const Tabs = createMaterialTopTabNavigator({
     feed: MainFeed,
     camera: Camera,
     profile: Profile
 })
 
-const IntroStack = StackNavigator({
+const IntroStack = createStackNavigator({
     register: Register,
     login: Login
 })
 
-const MainStack = SwitchNavigator({
+const MainStack = createSwitchNavigator({
     intro: IntroStack,
     main: Tabs
 })

@@ -1,17 +1,46 @@
 import React, {Component} from 'react';
 import { View, Text, TouchableOpacity, TextInput, Button, StyleSheet } from 'react-native';
+import firebase from 'react-native-firebase';
+
+
+    firebase.initializeApp({
+        apiKey: "AIzaSyBw0BCvyj8nRQDYMjs2VScV3mY_rmmmDwY",
+        authDomain: "instaclone-e1871.firebaseapp.com",
+        databaseURL: "https://instaclone-e1871.firebaseio.com",
+        projectId: "instaclone-e1871",
+        storageBucket: "instaclone-e1871.appspot.com",
+        messagingSenderId: "188249188647"
+    }
+    );
 
 class Register extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
+        this.unsubscriber = null;
         this.state = {
+            isAuthenticated: false,
+            user: null,
+            error: '',
             credentials: {
-                login: '',
+                email: '',
                 password: ''
             }
         };
     }
+
+    componentDidMount() {
+        this.unsubscriber = firebase.auth().onAuthStateChanged((user) => {
+          this.setState({ user });
+        });
+      }
+    
+      componentWillUnmount() {
+        if (this.unsubscriber) {
+          this.unsubscriber();
+        }
+      }
+
 
     updateText(text, field) {
         let newCredentials = Object.assign(this.state.credentials);
@@ -21,9 +50,22 @@ class Register extends Component {
         });
     }
 
-    register() {
-        alert(JSON.stringify(this.state.credentials));
-        // this.props.navigation.navigate('main');
+    register = () => {
+        const email = this.state.credentials.email;
+        const password = this.state.credentials.password;
+        console.log('email', email);
+        console.log('password', password);
+        
+        firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email, password)
+            .then((loggedUser) => {
+                this.setState({user: loggedUser})
+                this.props.navigation.navigate('main');
+            })
+            .catch((error) => {
+                console.log('auth failed', error);
+                
+            })
+        // alert(JSON.stringify(this.state.credentials));
     }
 
     render(){
@@ -34,16 +76,13 @@ class Register extends Component {
                 flex:1, 
                 justifyContent:'center',
                 alignItems:'center'
-                }}
-                onPress={()=> {
-                    this.register();
                 }}>
                 <Text>register screen</Text>
                 <TextInput 
                 autoCorrect={false}
-                value={this.state.login}
-                onChangeText={text => this.updateText(text, 'login')}
-                placeholder='Username' 
+                value={this.state.email}
+                onChangeText={text => this.updateText(text, 'email')}
+                placeholder='Email' 
                 style={styles.input}>
                 </TextInput>
                 <TextInput 
