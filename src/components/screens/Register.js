@@ -3,15 +3,15 @@ import { View, Text, TouchableOpacity, TextInput, Button, StyleSheet } from 'rea
 import firebase from 'react-native-firebase';
 
 
-    firebase.initializeApp({
-        apiKey: "AIzaSyBw0BCvyj8nRQDYMjs2VScV3mY_rmmmDwY",
-        authDomain: "instaclone-e1871.firebaseapp.com",
-        databaseURL: "https://instaclone-e1871.firebaseio.com",
-        projectId: "instaclone-e1871",
-        storageBucket: "instaclone-e1871.appspot.com",
-        messagingSenderId: "188249188647"
-    }
-    );
+    // firebase.initializeApp({
+    //     apiKey: "AIzaSyBw0BCvyj8nRQDYMjs2VScV3mY_rmmmDwY",
+    //     authDomain: "instaclone-e1871.firebaseapp.com",
+    //     databaseURL: "https://instaclone-e1871.firebaseio.com",
+    //     projectId: "instaclone-e1871",
+    //     storageBucket: "instaclone-e1871.appspot.com",
+    //     messagingSenderId: "188249188647"
+    // }
+    // );
 
 class Register extends Component {
 
