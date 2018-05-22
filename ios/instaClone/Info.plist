@@ -52,5 +52,19 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+<string>Do you allow camera access?</string>
+
+<!-- Include this only if you are planning to use the camera roll -->
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Do you allow access to your photo library?</string>
+
+<!-- Include this only if you are planning to use the microphone for video recording -->
+<key>NSMicrophoneUsageDescription</key>
+<string>Do you allow microphone access?</string>
+
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Do you allow camera roll access?</string>
+
 </dict>
 </plist>

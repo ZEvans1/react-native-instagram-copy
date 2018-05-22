@@ -16,6 +16,7 @@ class Login extends Component {
             }
         };
     }
+    
 
     componentDidMount() {
         this.unsubscriber = firebase.auth().onAuthStateChanged((changedUser) => {
